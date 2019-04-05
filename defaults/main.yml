@@ -5,7 +5,7 @@ flightdeck_groups:
   - name: "flightdeck"
 
 flightdeck_users:
-  - name: "flighdeck"
+  - name: "flightdeck"
     group: "flightdeck"
     home: "/home/flightdeck"
 
