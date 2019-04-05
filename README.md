@@ -10,11 +10,28 @@ Installs base utilities and performs common configuration the [Flight Deck](http
 
 Available variables are listed below, along with default values (see `defaults/main.yml`).
 
+### Creating groups
+
+`flightdeck_groups`
+
+Specifies the groups to create.
+
+```yaml
+flightdeck_groups:
+  - name: "flighdeck"
+  - name: "green"
+    gid: 999
+  - name: "purple"
+    system: true
+```
+
 ### Creating users
 
 `flightdeck_users`
 
-Specifies the users to create inside the container. The format is similar to [socketwench.users-and-groups](https://github.com/socketwench/ansible-role-users-and-groups).
+Specifies the users to create. The format is similar to [socketwench.users-and-groups](https://github.com/socketwench/ansible-role-users-and-groups).
+
+Groups must first be created using `flightdeck_groups`.
 
 ```yaml
 flightdeck_users:

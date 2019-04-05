@@ -1,10 +1,29 @@
 ---
+- name: Create groups.
+  shell: >
+    addgroup
+    {% if item.gid | default(false) %}-g {{ item.gid | int }}{% endif %}
+    {% if item.system | default(false) %}-S{% endif %}
+    {{ item.name }}
+  loop: "{{ flightdeck_groups }}"
+
 - name: Create the container users.
   shell: >
-    adduser -g {{ item.group | default(item.name) }}
+    adduser -G {{ item.group | default(item.name) }}
     -D
     -h {{ item.home | default('/home/' + item.name) }}
+    -s {{ item.shell | default('/bin/bash') }}
+    {% if item.uid | default(false) %}-u {{ item.uid | int }}{% endif %}
+    {% if item.system | default(false) %}-S{% endif %}
     {{ item.name }}
+  loop: "{{ flightdeck_users }}"
+
+- name: Add users to secondary groups.
+  shell: >
+    {% for _group as item.groups | default([]) %}
+    addgroup {{ item.name }} {{ _group }} &&
+    {% endfor %}
+    true
   loop: "{{ flightdeck_users }}"
 
 - name: Install base utlities.
