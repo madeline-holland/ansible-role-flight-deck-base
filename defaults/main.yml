@@ -1,6 +1,8 @@
 ---
 flighdeck_motd_name: ''
 
+flightdeck_groups: []
+
 flightdeck_users:
   - name: "flighdeck"
     group: "flightdeck"
