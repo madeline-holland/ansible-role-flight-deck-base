@@ -20,7 +20,7 @@
 
 - name: Add users to secondary groups.
   shell: >
-    {% for _group as item.groups | default([]) %}
+    {% for _group in item.groups | default([]) %}
     addgroup {{ item.name }} {{ _group }} &&
     {% endfor %}
     true
