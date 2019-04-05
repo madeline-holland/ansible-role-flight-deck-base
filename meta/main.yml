@@ -1,0 +1,17 @@
+galaxy_info:
+  role_name: flightdeck_base
+  author: socketwench
+  company: TEN7
+  description: Performs base configuration for Flight Deck containers
+  license: GPLv3
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Alpine
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []

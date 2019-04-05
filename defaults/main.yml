@@ -1,0 +1,17 @@
+---
+flighdeck_motd_name: ''
+
+flightdeck_users:
+  - name: "flighdeck"
+    group: "flightdeck"
+    home: "/home/flightdeck"
+
+flightdeck_root_prompt: '\u@flight-deck-base:\w# '
+flightdeck_user_prompt: '\u@flight-deck-base:\w$ '
+
+flightdeck_base_packages:
+  - "bash"
+
+flightdeck_run_commands: ''
+
+flightdeck_debug: false

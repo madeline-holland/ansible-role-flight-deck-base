@@ -1,0 +1,8 @@
+---
+- name: clear apk cache
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "/tmp/*"
+    - "/var/cache/apk/*"

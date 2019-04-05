@@ -1,0 +1,65 @@
+---
+- name: Create the container users.
+  shell: >
+    adduser -g {{ item.group | default(item.name) }}
+    -D
+    -h {{ item.home | default('/home/' + item.name) }}
+    {{ item.name }}
+  loop: "{{ flightdeck_users }}"
+
+- name: Install base utlities.
+  apk:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ flightdeck_base_packages }}"
+  notify:
+    - clear apk cache
+
+- name: Deploy key scripts.
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "root"
+    group: "root"
+    mode: "u=rx,g=rx,o=rx"
+  loop:
+    - src: "templates/docker-entrypoint.sh.j2"
+      dest: "/usr/local/bin/docker-entrypoint.sh"
+    - src: "templates/motd.j2"
+      dest: "/etc/motd"
+    - src: "templates/vim.j2"
+      dest: "/usr/bin/vim"
+
+- name: Write the root .bashrc file
+  copy:
+    dest: "/root/.bashrc"
+    content: |
+      PS1="{{ flightdeck_root_prompt }}"
+    owner: "root"
+    group: "root"
+    mode: "u=rx,g=rx,o="
+
+- name: Write the service account .bashrc file
+  copy:
+    dest: "{{ item.home | default('/home/' + item.name) }}/.bashrc"
+    content: |
+      PS1="{{ flightdeck_user_prompt }}"
+      cd $HOME
+      cat /etc/motd
+    owner: "{{ item.name }}"
+    group: "{{ item.group | default(item.name) }}"
+    mode: "u=rx,g=rx,o="
+  loop: "{{ flightdeck_users }}"
+
+- name: Write the service account .bash_profile file
+  copy:
+    dest: "{{ item.home | default('/home/' + item.name) }}/.bash_profile"
+    content: |
+      PS1="{{ flightdeck_user_prompt }}"
+      cd $HOME
+      cat /etc/motd
+    owner: "{{ item.name }}"
+    group: "{{ item.group | default(item.name) }}"
+    mode: "u=rx,g=rx,o="
+  loop: "{{ flightdeck_users }}"

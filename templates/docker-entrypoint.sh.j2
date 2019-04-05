@@ -1,0 +1,12 @@
+#!/bin/bash
+set -me
+
+SCRIPT_NAME=`basename "$0"`
+
+echo "$SCRIPT_NAME: Beginning initialization..."
+
+{{ flightdeck_run_commands }}
+
+echo "$SCRIPT_NAME: Initialization complete. Starting container..."
+
+exec "$@"
