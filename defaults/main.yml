@@ -3,13 +3,11 @@ flighdeck_motd_name: ''
 
 flightdeck_groups:
   - name: "flightdeck"
-    gid: "999"
 
 flightdeck_users:
   - name: "flighdeck"
     group: "flightdeck"
     home: "/home/flightdeck"
-    uid: "999"
 
 flightdeck_root_prompt: '\u@flight-deck-base:\w# '
 flightdeck_user_prompt: '\u@flight-deck-base:\w$ '
