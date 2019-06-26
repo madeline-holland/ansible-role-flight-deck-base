@@ -66,6 +66,7 @@
       PS1="{{ flightdeck_user_prompt }}"
       cd $HOME
       cat /etc/motd
+      {% if flightdeck_path | length > 0 %}export PATH=$PATH:{{ flightdeck_path | join(':') }}{% endif %}
     owner: "{{ item.name }}"
     group: "{{ item.group | default(item.name) }}"
     mode: "u=rx,g=rx,o="
