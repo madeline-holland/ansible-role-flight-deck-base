@@ -18,3 +18,5 @@ flightdeck_base_packages:
 flightdeck_run_commands: ''
 
 flightdeck_debug: false
+
+flightdeck_path: []
