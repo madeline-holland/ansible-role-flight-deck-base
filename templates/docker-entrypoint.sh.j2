@@ -2,8 +2,17 @@
 set -me
 
 SCRIPT_NAME=`basename "$0"`
+FLIGHTDECK_SKIP_ENTRYPOINT=${FLIGHTDECK_SKIP_ENTRYPOINT:-false}
 
 echo "$SCRIPT_NAME: Beginning initialization..."
+
+case ${FLIGHTDECK_SKIP_ENTRYPOINT,,} in
+  true|1)
+    echo "$SCRIPT_NAME: Skipping entrypoint. Starting container..."
+    exec "$@"
+    exit $?
+    ;;
+esac
 
 {{ flightdeck_run_commands }}
 
