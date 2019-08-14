@@ -67,6 +67,9 @@
       cd $HOME
       cat /etc/motd
       {% if flightdeck_path | length > 0 %}export PATH=$PATH:{{ flightdeck_path | join(':') }}{% endif %}
+      {% for _envvar in flightdeck_env %}
+      export {{ _envvar.name }}='{{ _envvar.value | regex_replace("'", "\'") }}'
+      {% endfor %}
     owner: "{{ item.name }}"
     group: "{{ item.group | default(item.name) }}"
     mode: "u=rx,g=rx,o="
