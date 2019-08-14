@@ -80,6 +80,9 @@
       cd $HOME
       cat /etc/motd
       {% if flightdeck_path | length > 0 %}export PATH=$PATH:{{ flightdeck_path | join(':') }}{% endif %}
+      {% for _envvar in flightdeck_env %}
+      export {{ _envvar.name }}='{{ _envvar.value | regex_replace("'", "\'") }}'
+      {% endfor %}
     owner: "{{ item.name }}"
     group: "{{ item.group | default(item.name) }}"
     mode: "u=rx,g=rx,o="
@@ -92,3 +95,11 @@
     line: "export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:{{ flightdeck_path | join(':') }}"
   when:
     - flightdeck_path | length > 0
+
+- name: Add env vars to /etc/profile
+  lineinfile:
+    dest: "/etc/profile"
+    regexp: "^export {{ item.name }}="
+    line: |
+      export {{ item.name }}='{{ _envvar.value | regex_replace("'", "\'") }}'
+  loop: "{{ flightdeck_env }}"
