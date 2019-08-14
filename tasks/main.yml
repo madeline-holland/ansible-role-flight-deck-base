@@ -101,5 +101,5 @@
     dest: "/etc/profile"
     regexp: "^export {{ item.name }}="
     line: |
-      export {{ item.name }}='{{ _envvar.value | regex_replace("'", "\'") }}'
+      export {{ item.name }}='{{ item.value | regex_replace("'", "\'") }}'
   loop: "{{ flightdeck_env }}"
