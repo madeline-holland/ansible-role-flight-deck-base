@@ -1,19 +1,23 @@
+*
+                    *                  ,▄▄#ΦÑ█
+      Flightdeck                  ,▄#Φ▀   ░░░▓
+    ==============             ,æM▀▄   ░░░░░▓
+    LAMP stack for          ,m╜`    ▀▒░░░░░▓
+    Docker and K8s       ,▄╜╓æª*ª≡▄  ╙▀▓░░▓
+                       ╓M' ▀,      ▀@»»░▓▀          *
+                     ▄╨   ║▌ /\**/\ ▌»»▄▀
+          ,╓╓æ#MMM╦▄╨    »╙▓(  'w` )▀ ▀
+      ,▄▌▒░     ░▓╨   »»»»»─▀Φ▄▒▒Æ▀»▄▀                    *
+           -╙▀▄▒▀   »»»»»»»»»»»»»»▄▀
+              ▓   »»»»»»»»»»»»»»▄▀
+              ▓▓ »»»»»»»»»»»»»▄▀      {{ flighdeck_motd_name }}
+    *         ▀▓█▄ »»»»»»»»»▓▓
+           ╔▓Φ╗▀▓██▓▄»»»»»▓▀░▌
+          ╣▓╫╫╫╣▄╙▀▀▀▀▀▀▀▌░░░▓
+         ╣╜╟▓▓╬▓▀        ▀░░░▀           *
+          ▄▓▀╙            ░░▀
+         `                █▀
 
-               ________________
-              |                |_____    __
-              | Flight Deck!!  |     |__|  |_{{ '_' * (flighdeck_motd_name | length) }}__
-              |________________|     |::|  | {{ ' ' * (flighdeck_motd_name | length) }}  /
- /\**/\       |                \.____|::|__| {{ flighdeck_motd_name }} <
-( o_o  )_     |                      \::/  \.{{ '_' * (flighdeck_motd_name | length) }}__\
- (u--u   \_)  |
-  (||___   )==\
-,dP"/b/=( /P"/b\
-|8 || 8\=== || 8
-`b,  ,P  `b,  ,P
-  """`     """`
-
-
-Welcome to Flight Deck, a minimal LAMP stack for Docker and k8s.
 {{''}}
 {% for item in flightdeck_motd_links %}
   {{ item.name }}: {{ item.url }}
