@@ -13,7 +13,6 @@
 
 
 Welcome to Flight Deck, a minimal LAMP stack for Docker and k8s.
-
-  * Site:        https://ten7.com/flightdeck
-  * Github:      https://github.com/ten7/flight-deck
-  * ReadTheDocs: https://flight-deck.readthedocs.io/en/latest/
+{% for item in flightdeck_motd_links %}
+  * {{ item.name }}: {{ item.url }}
+{% endfor %}

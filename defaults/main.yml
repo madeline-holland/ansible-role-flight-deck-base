@@ -22,3 +22,7 @@ flightdeck_debug: false
 flightdeck_path: []
 
 flightdeck_env: []
+
+flightdeck_motd_links:
+  - name: 'Learn more'
+    url: 'https://flightdeck.ten7.com/'
