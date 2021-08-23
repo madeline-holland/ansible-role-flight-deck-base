@@ -1,0 +1,23 @@
+#!/bin/bash
+set -m
+
+SCRIPT_NAME=`basename "$0"`
+FLIGHTDECK_SKIP_CONFIGURE=${FLIGHTDECK_SKIP_CONFIGURE:-false}
+
+case ${FLIGHTDECK_SKIP_CONFIGURE,,} in
+  true|1)
+    echo "$SCRIPT_NAME: Skipping post-run configuration. Running CMD..."
+    exec "$@"
+    exit $?
+    ;;
+esac
+
+echo "$SCRIPT_NAME: Beginning post-run configuration..."
+
+exec "$@ &"
+
+{{ flightdeck_config_commands }}
+
+echo "$SCRIPT_NAME: Post-run config complete. Container operational."
+
+fg %1
