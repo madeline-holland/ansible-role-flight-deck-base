@@ -14,10 +14,10 @@ esac
 
 echo "$SCRIPT_NAME: Beginning post-run configuration..."
 
-exec "$@ &"
+$@ &
 
 {{ flightdeck_config_commands }}
 
 echo "$SCRIPT_NAME: Post-run config complete. Container operational."
 
-fg %1
+fg
