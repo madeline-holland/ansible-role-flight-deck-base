@@ -14,7 +14,7 @@ case ${FLIGHTDECK_SKIP_ENTRYPOINT,,} in
     ;;
 esac
 
-{{ flightdeck_run_commands }}
+{{ flightdeck_init_commands }}
 
 echo "$SCRIPT_NAME: Initialization complete. Starting container..."
 

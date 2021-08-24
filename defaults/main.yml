@@ -9,15 +9,15 @@ flightdeck_users:
     group: "flightdeck"
     home: "/home/flightdeck"
 
-flightdeck_root_prompt: '\u@flight-deck-base:\w# '
-flightdeck_user_prompt: '\u@flight-deck-base:\w$ '
+flightdeck_root_prompt: '\u@flightdeck-base:\w# '
+flightdeck_user_prompt: '\u@flightdeck-base:\w$ '
 
 flightdeck_base_packages:
   - "bash"
 
-flightdeck_run_commands: ''
+flightdeck_init_commands: ''
 
-flightdeck_config_commands: ''
+flightdeck_run_commands: ''
 
 flightdeck_debug: false
 
