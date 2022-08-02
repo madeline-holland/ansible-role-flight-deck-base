@@ -28,3 +28,5 @@ flightdeck_env: []
 flightdeck_motd_links:
   - name: 'Learn more'
     url: 'https://flightdeck.ten7.com/'
+
+flightdeck_entrypath: ''
