@@ -90,6 +90,9 @@
       {% for _envvar in flightdeck_env %}
       export {{ _envvar.name }}='{{ _envvar.value | regex_replace("'", "\'") }}'
       {% endfor %}
+      {% if flightdeck_entrypath %}
+      cd {{ flightdeck_entrypath }}
+      {% endif %}
     owner: "{{ item.name }}"
     group: "{{ item.group | default(item.name) }}"
     mode: "u=rx,g=rx,o="
